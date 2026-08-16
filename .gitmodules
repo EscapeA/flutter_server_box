@@ -4,7 +4,7 @@
 	branch = master
 [submodule "xterm"]
 	path = packages/xterm
-	url = https://github.com/lollipopkit/xterm.dart
+	url = https://github.com/EscapeA/xterm.dart
 	branch = master
 [submodule "fl_lib"]
 	path = packages/fl_lib
