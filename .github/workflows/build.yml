@@ -107,6 +107,12 @@ jobs:
         run: |
           flutter pub get
           scripts/release/patch-jni-build-id.sh
+      - name: Run IME tests
+        shell: bash
+        run: |
+          cd packages/xterm
+          flutter pub get
+          flutter test test/src/ui/custom_text_edit_test.dart
       - name: Build (release)
         if: inputs.release == true || github.ref_type == 'tag'
         shell: bash
