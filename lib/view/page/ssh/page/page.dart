@@ -415,7 +415,13 @@ class SSHPageState extends ConsumerState<SSHPage>
           _terminal,
           key: _termKey,
           controller: _terminalController,
-          keyboardType: TextInputType.text,
+          // Termux-style: default to a password-type input (no candidates, no
+          // composing preview) so IME candidate-replacement bugs cannot occur.
+          // letterCache (普通键盘输入) re-enables the full text input with
+          // suggestions; the xterm IME bridge then handles candidate replace.
+          keyboardType: letterCache
+              ? TextInputType.text
+              : TextInputType.visiblePassword,
           enableSuggestions: letterCache,
           textStyle: _terminalStyle,
           backgroundOpacity: 0,
